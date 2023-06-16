@@ -1,0 +1,49 @@
+﻿@model Analiza
+
+@{
+    ViewData["Title"] = "Detalii Analiza";
+}
+
+<div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @Model.NumeAnaliza
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text"><b>Clinica:</b><a asp-controller="Clinici" asp-action="Details" asp-route-id="@Model.ClinicaId"> @Model.Clinica.NumeClinica </a></p>
+                            <p class="card-text"><b>Categorie: </b>@Model.CategorieAnaliza</p>
+                            <p class="card-text"><b>Doctor:</b><hr />
+                                <div class="row"> 
+                                @foreach(var doctor in Model.Doctori_Analize)
+                                {
+                                    <div class="column text-center">
+                                        <img class="border-info rounded-circle" src="@doctor.Doctor.PozaDeProfilURL" stype="max-width: 150px" />
+                                        <br />
+                                        <a asp-controller="Doctori" asp-route-id="@doctor.DoctorId">@doctor.Doctor.NumeDoctor</a>
+                                    </div>
+                                }
+
+                                </div></p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-route-id="Index">Inapoi la lista de Analize </a> 
+                                <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Adauga in cos (Pret: @Model.PretAnaliza lei)</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

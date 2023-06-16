@@ -1,0 +1,52 @@
+﻿@model Doctor
+
+@{
+    ViewData["Title"] = "Detalii Doctor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Detalii pt @Model.NumeDoctor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                    <div style="margin-bottom: 10px;" class="form-group text-center">
+                        <img class="border-info rounded-circle" style="max-width: 150px" id="PozaDeProfilPreview" />
+                    </div>
+
+                    <div style="margin-bottom: 10px;" class="form-group">
+                        <label asp-for="PozaDeProfilURL" class="control-label"></label>
+                        <input asp-for="PozaDeProfilURL" class="form-control" readonly />
+                        <span asp-validation-for="PozaDeProfilURL" class="text-danger"></span>
+                    </div>
+
+                    <div style="margin-bottom: 10px;" class="form-group">
+                        <label asp-for="NumeDoctor" class="control-label"></label>
+                        <input asp-for="NumeDoctor" class="form-control" readonly />
+                        <span asp-validation-for="NumeDoctor" class="text-danger"></span>
+                    </div>
+
+                    <div style="margin-bottom: 10px;" class="form-group">
+                        <label asp-for="DespreDoctor" class="control-label"></label>
+                        <input asp-for="DespreDoctor" class="form-control" readonly />
+                        <span asp-validation-for="DespreDoctor" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <a class="btn btn-outline-success float-end" asp-action="Edit" asp-route-id="@Model.Id" >Editeaza</a> 
+                        <a class="btn btn-outline-secondary" asp-action="Index">Afisaza toti Doctorii</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function (){
+            var output = document.getElementById('PozaDeProfilPreview');
+            output.src = $("#PozaDeProfilURL").val();
+        })
+    </script>
+}

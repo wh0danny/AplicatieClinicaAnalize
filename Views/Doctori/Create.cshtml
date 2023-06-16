@@ -1,0 +1,61 @@
+﻿@model Doctor
+
+@{
+    ViewData["Title"] = "Adauga Doctor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Adauga un Doctor nou</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                    <div style="margin-bottom: 10px;" class="form-group text-center">
+                        <img id="PozaDeProfilPreview" />
+                    </div>
+
+                    <div style="margin-bottom: 10px;" class="form-group">
+                        <label asp-for="PozaDeProfilURL" class="control-label"></label>
+                        <input asp-for="PozaDeProfilURL" class="form-control" />
+                        <span asp-validation-for="PozaDeProfilURL" class="text-danger"></span>
+                    </div>
+
+                    <div style="margin-bottom: 10px;" class="form-group">
+                        <label asp-for="NumeDoctor" class="control-label"></label>
+                        <input asp-for="NumeDoctor" class="form-control" />
+                        <span asp-validation-for="NumeDoctor" class="text-danger"></span>
+                    </div>
+
+                    <div style="margin-bottom: 10px;" class="form-group">
+                        <label asp-for="DespreDoctor" class="control-label"></label>
+                        <input asp-for="DespreDoctor" class="form-control" />
+                        <span asp-validation-for="DespreDoctor" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Adauga Doctor" class="btn btn-outline-success float-end"/>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Afisaza toti Doctorii</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function (){
+            var output = document.getElementById('PozaDeProfilPreview');
+            output.src = $("#PozaDeProfilURL").val();
+        })
+
+        $("#PozaDeProfilURL").on("change", function () {
+            var output = document.getElementById('PozaDeProfilPreview');
+            output.src = $(this).val();
+        })
+    </script>
+}
