@@ -1,18 +1,18 @@
 ﻿@model AnalizaNouaVM
 @using AplicatieClinicaAnalize.Data.Enums;
 @{
-    ViewData["Title"] = "Adauga o noua analiza";
+    ViewData["Title"] = "Editeaza analiza";
 }
 
 <div class="row">
     <div class="col-md-8 offset-2">
         <p>
-            <h4>Adauga o noua analiza</h4>
+            <h4>Editeaza analiza</h4>
         </p>
 
         <div class="row">
              <div class="col-md-8 offset-2">
-                 <form asp-action="Create">
+                 <form asp-action="Edit">
                      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                      
                      <div class="row">
@@ -46,7 +46,7 @@
                      </div>
 
                      <div class="form-group">
-                         <input type="submit" value="Creaza" class="btn btn-outline-success float-end" />
+                         <input type="submit" value="Editeaza" class="btn btn-outline-success float-end" />
                          <a class="btn btn-outline-secondary" asp-action="Index">Afisaza toate analizele</a>
                      </div>
 

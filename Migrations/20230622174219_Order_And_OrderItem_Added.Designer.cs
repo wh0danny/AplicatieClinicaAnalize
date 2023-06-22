@@ -3,6 +3,7 @@ using AplicatieClinicaAnalize.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AplicatieClinicaAnalize.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230622174219_Order_And_OrderItem_Added")]
+    partial class Order_And_OrderItem_Added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,31 +168,6 @@ namespace AplicatieClinicaAnalize.Migrations
                     b.ToTable("OrderItem");
                 });
 
-            modelBuilder.Entity("AplicatieClinicaAnalize.Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("AnalizaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCartId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnalizaId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
             modelBuilder.Entity("AplicatieClinicaAnalize.Models.Analiza", b =>
                 {
                     b.HasOne("AplicatieClinicaAnalize.Models.Clinica", "Clinica")
@@ -237,17 +215,6 @@ namespace AplicatieClinicaAnalize.Migrations
                     b.Navigation("Analiza");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("AplicatieClinicaAnalize.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("AplicatieClinicaAnalize.Models.Analiza", "Analiza")
-                        .WithMany()
-                        .HasForeignKey("AnalizaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Analiza");
                 });
 
             modelBuilder.Entity("AplicatieClinicaAnalize.Models.Analiza", b =>

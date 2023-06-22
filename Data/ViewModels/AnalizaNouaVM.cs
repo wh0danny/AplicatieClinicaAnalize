@@ -7,6 +7,8 @@ namespace AplicatieClinicaAnalize.Models
 {
     public class AnalizaNouaVM
     {
+        public int Id { get; set; }
+
         [Display(Name = "Nume Analiza")]
         //[Required(ErrorMessage = "Numele este obligatoriu")]
         public string NumeAnaliza { get; set; }

@@ -8,5 +8,8 @@ namespace AplicatieClinicaAnalize.Data.Services
     {
         Analiza GetAnalizaById(int id);
         AnalizaNouaDropdownsVM GetAnalizaNouaDropdownsValues();
+        Analiza AdaugaAnalizaNoua(AnalizaNouaVM data);
+        Analiza EditeazaAnalizaNoua(AnalizaNouaVM data);
+
     }
 }

@@ -1,4 +1,5 @@
 using AplicatieClinicaAnalize.Data;
+using AplicatieClinicaAnalize.Data.Cart;
 using AplicatieClinicaAnalize.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,11 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IDoctoriService, DoctoriService>();
 builder.Services.AddScoped<ICliniciService, CliniciService>();
 builder.Services.AddScoped<IAnalizeService, AnalizeService>();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+
+builder.Services.AddSession();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -25,6 +31,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession();
 
 app.UseAuthorization();
 

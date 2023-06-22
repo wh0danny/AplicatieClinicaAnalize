@@ -28,5 +28,11 @@ namespace AplicatieClinicaAnalize.Data
         public DbSet<Analiza> Analize { get; set; }
         public DbSet<Doctor_Analiza> Doctori_Analize { get; set; }
         public DbSet<Clinica> Clinici { get; set; }
+
+        //Orders related tables
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
     }
 }
