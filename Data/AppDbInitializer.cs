@@ -21,28 +21,33 @@ namespace AplicatieClinicaAnalize.Data
                     {
                         new Clinica(){
                             NumeClinica = "Clinica 1",
-                            LogoClinica = "https://dotnethow.net/images/cinemas/cinema-1.jpeg",
+                            LogoClinica = "https://i.imgur.com/uSoGh0Q.jpg",
                             DescriereClinica = "Descriere Clinica nr 1"
                         },
                         new Clinica(){
                             NumeClinica = "Clinica 2",
-                            LogoClinica = "https://dotnethow.net/images/cinemas/cinema-2.jpeg",
+                            LogoClinica = "https://i.imgur.com/8gtRcto.jpg",
                             DescriereClinica = "Descriere Clinica nr 2"
                         },
                         new Clinica(){
                             NumeClinica = "Clinica 3",
-                            LogoClinica = "https://dotnethow.net/images/cinemas/cinema-3.jpeg",
+                            LogoClinica = "https://i.imgur.com/sIP99lz.jpg",
                             DescriereClinica = "Descriere Clinica nr 3"
                         },
                         new Clinica(){
                             NumeClinica = "Clinica 4",
-                            LogoClinica = "https://dotnethow.net/images/cinemas/cinema-4.jpeg",
+                            LogoClinica = "https://i.imgur.com/8HIYN85.jpg",
                             DescriereClinica = "Descriere Clinica nr 4"
                         },
                         new Clinica(){
                             NumeClinica = "Clinica 5",
-                            LogoClinica = "https://dotnethow.net/images/cinemas/cinema-5.jpeg",
+                            LogoClinica = "https://i.imgur.com/KdFeHmI.jpg",
                             DescriereClinica = "Descriere Clinica nr 5"
+                        },
+                        new Clinica(){
+                            NumeClinica = "Clinica 6",
+                            LogoClinica = "https://i.imgur.com/hpoX8uz.jpg",
+                            DescriereClinica = "Descriere Clinica nr 6"
                         }
                     });
                     context.SaveChanges();
@@ -56,31 +61,37 @@ namespace AplicatieClinicaAnalize.Data
                         {
                             NumeDoctor = "Nume Doctor 1",
                             DespreDoctor = "Informatii despre primul doctor",
-                            PozaDeProfilURL = "https://dotnethow.net/images/actors/actor-1.jpeg"
+                            PozaDeProfilURL = "https://i.imgur.com/wGlcAgK.jpg"
                         },
                         new Doctor()
                         {
                             NumeDoctor = "Nume Doctor 2",
                             DespreDoctor = "Informatii despre al doilea doctor",
-                            PozaDeProfilURL = "https://dotnethow.net/images/actors/actor-2.jpeg"
+                            PozaDeProfilURL = "https://i.imgur.com/nR0rI31.jpg"
                         },
                         new Doctor()
                         {
                             NumeDoctor = "Nume Doctor 3",
                             DespreDoctor = "Informatii despre al treilea doctor",
-                            PozaDeProfilURL = "https://dotnethow.net/images/actors/actor-3.jpeg"
+                            PozaDeProfilURL = "https://i.imgur.com/jg2TsFV.jpg"
                         },
                         new Doctor()
                         {
                             NumeDoctor = "Nume Doctor 4",
                             DespreDoctor = "Informatii despre al patrulea doctor",
-                            PozaDeProfilURL = "https://dotnethow.net/images/actors/actor-4.jpeg"
+                            PozaDeProfilURL = "https://i.imgur.com/VmDaoNK.jpg"
                         },
                         new Doctor()
                         {
                             NumeDoctor = "Nume Doctor 5",
                             DespreDoctor = "Informatii despre al cincilea doctor",
-                            PozaDeProfilURL = "https://dotnethow.net/images/actors/actor-5.jpeg"
+                            PozaDeProfilURL = "https://i.imgur.com/WlvEbaj.jpg"
+                        },
+                        new Doctor()
+                        {
+                            NumeDoctor = "Nume Doctor 6",
+                            DespreDoctor = "Informatii despre al saselea doctor",
+                            PozaDeProfilURL = "https://i.imgur.com/PMcHDHa.jpg"
                         }
                     });
                     context.SaveChanges();
