@@ -9,11 +9,20 @@ namespace AplicatieClinicaAnalize.Controllers
     {
         private readonly IAnalizeService _analizeService;
         private readonly ShoppingCart _shoppingCart;
+        private readonly IOrdersService _ordersService;
 
-        public OrdersController(IAnalizeService analizeService, ShoppingCart shoppingCart)
+        public OrdersController(IAnalizeService analizeService, ShoppingCart shoppingCart, IOrdersService ordersService)
         {
             _analizeService = analizeService;
             _shoppingCart = shoppingCart;
+            _ordersService = ordersService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            string userId = "";
+            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+            return View(orders);
         }
 
         public IActionResult ShoppingCart()
@@ -51,5 +60,18 @@ namespace AplicatieClinicaAnalize.Controllers
             }
             return RedirectToAction(nameof(ShoppingCart));
         }
+
+        public async Task<IActionResult> CompleteOrder()
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            string userId = "";
+            string userEmailAddress = "";
+
+            await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
+
+            await _shoppingCart.ClearShoppingCartAsync();
+            return View("OrderCompleted");
+        }
+
     }
 }

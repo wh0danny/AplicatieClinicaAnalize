@@ -1,6 +1,9 @@
 using AplicatieClinicaAnalize.Data;
 using AplicatieClinicaAnalize.Data.Cart;
 using AplicatieClinicaAnalize.Data.Services;
+using AplicatieClinicaAnalize.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,11 +15,21 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 builder.Services.AddScoped<IDoctoriService, DoctoriService>();
 builder.Services.AddScoped<ICliniciService, CliniciService>();
 builder.Services.AddScoped<IAnalizeService, AnalizeService>();
+builder.Services.AddScoped<IOrdersService, OrdersService >();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
+//Authentication and authorization
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddMemoryCache();
+
 builder.Services.AddSession();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -33,6 +46,10 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSession();
 
+//Authentication & Authorization
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -41,5 +58,6 @@ app.MapControllerRoute(
 
 //Seed DataBase
 AppDbInitializer.Seed(app);
+//AppDbInitializer.SeedUsersAndRolesAync(app).Wait();
 
 app.Run();

@@ -35,10 +35,36 @@
                         </li>
                     </ul>
 
-                    <form class="form-inline my-1 my-lg-0" asp-controller="Analize" asp-action="Filter" style="padding-right: 25px;">
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Analize" asp-action="Filter" style="padding-right: 25px; display: flex;">
                         <input name="searchString" type="text" class="form-control" placeholder="Cauta analize..." aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
                     </form>
+
+                    <ul class="navbar-nav">
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                    </ul>
+                    
+                    @*Login Button*@
+                    <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
+                        <i class="bi bi-box-arrow-in-right"></i> Log In
+                    </a>
+
+                    @*Register Button*@
+                    <a class="btn btn-outline-primary my-2 my-sm-0" asp-controller="Account" asp-action="Register">
+                        <i class="bi bi-person-plus"></i> Register
+                    </a>
+
+                    @*User Profile Section*@
+                    <div class="nav-item dropdown">
+                        <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown" aria-haspopup="true">
+                            <i class="bi bi-person-badge"></i> Hello User
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+                            <li>
+                                <a class="dropdown-item" asp-controller="Orders" asp-action="Index"><i class="bi bi-list"></i> Comenzi </a>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
             </div>
